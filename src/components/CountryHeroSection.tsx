@@ -186,7 +186,7 @@ const HeroSection = () => {
 
       {/* Portal Buttons */}
       <div className="absolute bottom-6 left-0 right-0 z-30 px-4">
-        <div className="max-w-md mx-auto lg:mx-0 lg:ml-20">
+        <div className="max-w-md mx-auto">
           <div className="grid grid-cols-2 gap-3">
             {portalLinks.map((link, index) => {
               const ButtonContent = (

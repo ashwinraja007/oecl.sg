@@ -209,7 +209,7 @@ const HeroSection = () => {
       {/* Portal Buttons */}
       <div className="absolute bottom-6 left-0 right-0 z-30 px-4">
         <div
-          className={`max-w-md mx-auto lg:mx-0 lg:ml-20 transition-all duration-1000 delay-1000 ${
+          className={`max-w-md mx-auto transition-all duration-1000 delay-1000 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
           }`}
         >
