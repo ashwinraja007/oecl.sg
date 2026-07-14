@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
 import {
-  Users,
-  UserCircle,
   SearchCode,
   Ship,
   ArrowRight,
@@ -15,7 +13,6 @@ const HeroSection = () => {
 
   const [isVisible, setIsVisible] = useState(false);
   const [activeSlide, setActiveSlide] = useState(0);
-  const [isCustomerPortalOpen, setIsCustomerPortalOpen] = useState(false);
   const [portalData, setPortalData] = useState<any>(null);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
@@ -35,14 +32,6 @@ const HeroSection = () => {
 
   /* -------- Dynamic Contact Redirect -------- */
   const contactRoute = country ? `/${country}/contact` : "/contact";
-
-  /* -------- Dynamic Portal Title -------- */
-  const getPortalTitle = () => {
-    if (country === "malaysia") return "Consolmate";
-    if (country === "indonesia" || country === "thailand")
-      return "Customer Portal";
-    return "Customer Portal";
-  };
 
   const defaultSlides = [
     { url: "/h1.png", title: "OECL", description: "Vital Link to Enhance Your Supply Chain.", gradient: "" },
@@ -85,22 +74,6 @@ const HeroSection = () => {
   }, []);
 
   const portalLinks = [
-    {
-      icon: <Users className="w-4 h-4" />,
-      title: portalData?.customer_portal_title || getPortalTitle(),
-      url: portalData?.customer_portal_url || "https://consolmate.com/auth/login/2",
-      external: true,
-      color: "from-red-500 to-red-700",
-      hoverColor: "from-red-600 to-red-800",
-    },
-    {
-      icon: <UserCircle className="w-4 h-4" />,
-      title: portalData?.partner_portal_title || "Partner Portal",
-      external: false,
-      onClick: () => setIsCustomerPortalOpen(true),
-      color: "from-red-500 to-red-700",
-      hoverColor: "from-red-600 to-red-800",
-    },
     {
       icon: <SearchCode className="w-4 h-4" />,
       title: portalData?.tracking_title || "Tracking",
@@ -213,8 +186,8 @@ const HeroSection = () => {
 
       {/* Portal Buttons */}
       <div className="absolute bottom-6 left-0 right-0 z-30 px-4">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+        <div className="max-w-md mx-auto lg:mx-0 lg:ml-20">
+          <div className="grid grid-cols-2 gap-3">
             {portalLinks.map((link, index) => {
               const ButtonContent = (
                 <div className="group relative overflow-hidden w-full h-14 flex flex-col items-center justify-center text-xs rounded-lg shadow-md hover:scale-105 transition">
@@ -232,66 +205,20 @@ const HeroSection = () => {
                 </div>
               );
 
-              if (link.external) {
-                return (
-                  <a
-                    href={link.url}
-                    key={index}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    {ButtonContent}
-                  </a>
-                );
-              }
-
               return (
-                <button key={index} onClick={link.onClick}>
+                <a
+                  href={link.url}
+                  key={index}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   {ButtonContent}
-                </button>
+                </a>
               );
             })}
           </div>
         </div>
       </div>
-
-      {/* Partner Portal Modal */}
-      {isCustomerPortalOpen && (
-        <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
-          <div className="bg-white rounded-2xl shadow-2xl max-w-5xl w-full">
-            <div className="p-8 text-center">
-              <h2 className="text-2xl font-bold text-blue-900 mb-6">
-                {portalData?.partner_portal_title || "Partner Portal"}
-              </h2>
-
-              <div className="aspect-video bg-black rounded-xl overflow-hidden">
-                <video controls className="w-full h-full">
-                  <source src="/OECLh.mp4" type="video/mp4" />
-                </video>
-              </div>
-
-              <div className="mt-8 flex justify-center gap-4">
-                <button
-                  onClick={() => setIsCustomerPortalOpen(false)}
-                  className="px-5 py-2 bg-gray-200 rounded-md"
-                >
-                  Cancel
-                </button>
-
-                <a
-                  href={portalData?.partner_portal_url || "https://pp.onlinetracking.co/auth/login/2"}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <button className="px-6 py-2 bg-blue-600 text-white rounded-md">
-                    Login
-                  </button>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
     </section>
   );
 };

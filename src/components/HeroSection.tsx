@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
 import {
-  Users,
-  UserCircle,
   SearchCode,
   Ship,
   ArrowRight,
@@ -13,7 +11,6 @@ import { Link } from "react-router-dom";
 const HeroSection = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [activeSlide, setActiveSlide] = useState(0);
-  const [isCustomerPortalOpen, setIsCustomerPortalOpen] = useState(false);
   const [portalData, setPortalData] = useState<any>(null);
   const [mousePosition, setMousePosition] = useState({
     x: 0,
@@ -60,22 +57,6 @@ const HeroSection = () => {
   }, []);
 
   const portalLinks = [
-    {
-      icon: <Users className="w-4 h-4" />,
-      title: portalData?.customer_portal_title || "Consolmate",
-      url: portalData?.customer_portal_url || "https://consolmate.com/auth/login/2",
-      external: true,
-      color: "from-red-500 to-red-700",
-      hoverColor: "from-red-600 to-red-800",
-    },
-    {
-      icon: <UserCircle className="w-4 h-4" />,
-      title: portalData?.partner_portal_title || "Partner Portal",
-      external: false,
-      onClick: () => setIsCustomerPortalOpen(true),
-      color: "from-red-500 to-red-700",
-      hoverColor: "from-red-600 to-red-800",
-    },
     {
       icon: <SearchCode className="w-4 h-4" />,
       title: portalData?.tracking_title || "Tracking",
@@ -228,11 +209,11 @@ const HeroSection = () => {
       {/* Portal Buttons */}
       <div className="absolute bottom-6 left-0 right-0 z-30 px-4">
         <div
-          className={`max-w-7xl mx-auto transition-all duration-1000 delay-1000 ${
+          className={`max-w-md mx-auto lg:mx-0 lg:ml-20 transition-all duration-1000 delay-1000 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
           }`}
         >
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+          <div className="grid grid-cols-2 gap-3">
             {portalLinks.map((link, index) => {
               const ButtonContent = (
                 <div className="group relative overflow-hidden w-full h-14 sm:h-16 md:h-18 flex flex-col gap-1 items-center justify-center text-xs transition-all duration-300 rounded-lg shadow-md hover:shadow-lg transform hover:scale-105 hover:-translate-y-1">
@@ -253,96 +234,21 @@ const HeroSection = () => {
                 </div>
               );
 
-              if (link.external) {
-                return (
-                  <a
-                    href={link.url}
-                    key={index}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-full"
-                  >
-                    {ButtonContent}
-                  </a>
-                );
-              } else if (link.onClick) {
-                return (
-                  <button
-                    key={index}
-                    onClick={link.onClick}
-                    className="w-full"
-                  >
-                    {ButtonContent}
-                  </button>
-                );
-              } else {
-                return (
-                  <Link to={link.url} key={index} className="w-full">
-                    {ButtonContent}
-                  </Link>
-                );
-              }
+              return (
+                <a
+                  href={link.url}
+                  key={index}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full"
+                >
+                  {ButtonContent}
+                </a>
+              );
             })}
           </div>
         </div>
       </div>
-
-      {/* Partner Portal Modal – single video UI */}
-      {isCustomerPortalOpen && (
-        <div className="fixed inset-0 bg-black/50 z-[50] flex items-center justify-center p-4">
-          <div className="bg-white rounded-2xl shadow-2xl max-w-5xl w-full max-h-[90vh] overflow-y-auto">
-            <div className="p-8">
-              {/* Header */}
-              <div className="relative flex justify-center items-center mb-6">
-                <h2 className="text-2xl font-bold text-blue-900 text-center w-full">
-                  {portalData?.partner_portal_title || "Partner Portal"}
-                </h2>
-                <button
-                  onClick={() => setIsCustomerPortalOpen(false)}
-                  className="text-gray-500 hover:text-gray-700 text-2xl absolute right-0"
-                >
-                  ×
-                </button>
-              </div>
-
-              {/* Subtitle + Single Video */}
-              <div className="space-y-5 text-center">
-                <h3 className="font-semibold text-gray-800 text-lg">
-                  Tutorial Video
-                </h3>
-                <div className="max-w-3xl mx-auto">
-                  <div className="aspect-video rounded-xl overflow-hidden bg-black">
-                    <video controls className="w-full h-full object-cover">
-                      <source src="/OECLh.mp4" type="video/mp4" />
-                      Your browser does not support the video tag.
-                    </video>
-                  </div>
-                </div>
-              </div>
-
-              {/* Buttons */}
-              <div className="mt-8 flex justify-center gap-4">
-                <button
-                  onClick={() => setIsCustomerPortalOpen(false)}
-                  className="px-5 py-2.5 bg-gray-200 text-gray-700 rounded-md hover:bg-gray-300"
-                >
-                  Cancel
-                </button>
-
-                <a
-                  href={portalData?.partner_portal_url || "https://pp.onlinetracking.co/auth/login/2"}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <button className="px-6 py-2.5 bg-blue-600 text-white rounded-md hover:bg-blue-700">
-                    Login
-                  </button>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
     </section>
   );
 };

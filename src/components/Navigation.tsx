@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Menu, X } from "lucide-react";
+import { Menu, X, LogIn, Users, UserCircle, Briefcase, ChevronDown } from "lucide-react";
 import { useAuth } from "@/contexts/AuthContext";
 import CountrySelector from "@/components/CountrySelector";
 import { getCurrentCountryFromPath } from "@/services/countryDetection";
@@ -11,6 +11,27 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
 } from "@/components/ui/dropdown-menu";
+
+const loginPortals = [
+  {
+    title: "Consolmate",
+    description: "Consolidation & cargo management",
+    url: "https://consolmate.com/auth/login/2",
+    icon: Users,
+  },
+  {
+    title: "Partner Portal",
+    description: "For agents & business partners",
+    url: "https://pp.onlinetracking.co/auth/login/2",
+    icon: UserCircle,
+  },
+  {
+    title: "Employee",
+    description: "Internal staff access",
+    url: "https://cs.shipsoft.co/freight_forwarding/#/auth/login",
+    icon: Briefcase,
+  },
+];
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -135,6 +156,48 @@ const Navigation = () => {
                 Contact / Quote
               </Button>
             </Link>
+
+            {/* Login Dropdown */}
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button
+                  variant="outline"
+                  className="border-kargon-red text-kargon-red hover:bg-kargon-red hover:text-white rounded-md gap-2"
+                >
+                  <LogIn className="w-4 h-4" />
+                  Login
+                  <ChevronDown className="w-3.5 h-3.5 opacity-70" />
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent
+                align="end"
+                sideOffset={10}
+                className="w-72 p-2 bg-white border border-gray-100 shadow-xl rounded-xl z-[60]"
+              >
+                {loginPortals.map((portal) => (
+                  <DropdownMenuItem key={portal.title} asChild className="p-0 rounded-lg focus:bg-transparent">
+                    <a
+                      href={portal.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-3 w-full px-3 py-2.5 rounded-lg group hover:bg-red-50 transition-colors"
+                    >
+                      <span className="flex items-center justify-center w-9 h-9 rounded-lg bg-kargon-red/10 text-kargon-red group-hover:bg-kargon-red group-hover:text-white transition-colors shrink-0">
+                        <portal.icon className="w-4 h-4" />
+                      </span>
+                      <span className="flex flex-col">
+                        <span className="text-sm font-semibold text-gray-900">
+                          {portal.title}
+                        </span>
+                        <span className="text-xs text-gray-500">
+                          {portal.description}
+                        </span>
+                      </span>
+                    </a>
+                  </DropdownMenuItem>
+                ))}
+              </DropdownMenuContent>
+            </DropdownMenu>
           </div>
 
           {/* Mobile Menu Button */}
@@ -234,6 +297,37 @@ const Navigation = () => {
                   GET QUOTE
                 </Button>
               </Link>
+
+              {/* Login Section */}
+              <div className="border-t pt-3">
+                <span className="text-sm font-semibold text-gray-500 px-1">
+                  LOGIN
+                </span>
+                <div className="flex flex-col gap-2 mt-2">
+                  {loginPortals.map((portal) => (
+                    <a
+                      key={portal.title}
+                      href={portal.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={() => setIsMenuOpen(false)}
+                      className="flex items-center gap-3 w-full px-3 py-2.5 rounded-lg bg-gray-50 hover:bg-red-50 transition-colors"
+                    >
+                      <span className="flex items-center justify-center w-9 h-9 rounded-lg bg-kargon-red/10 text-kargon-red shrink-0">
+                        <portal.icon className="w-4 h-4" />
+                      </span>
+                      <span className="flex flex-col">
+                        <span className="text-sm font-semibold text-gray-900">
+                          {portal.title}
+                        </span>
+                        <span className="text-xs text-gray-500">
+                          {portal.description}
+                        </span>
+                      </span>
+                    </a>
+                  ))}
+                </div>
+              </div>
             </nav>
           </div>
         </div>
