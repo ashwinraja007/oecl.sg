@@ -161,13 +161,17 @@ const Navigation = () => {
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button
-                  variant="outline"
-                  className="border-kargon-red text-kargon-red hover:bg-kargon-red hover:text-white rounded-md gap-2"
-                >
-                  <LogIn className="w-4 h-4" />
-                  Login
-                  <ChevronDown className="w-3.5 h-3.5 opacity-70" />
-                </Button>
+  variant="outline"
+  className="border-kargon-red text-kargon-red hover:bg-kargon-red hover:text-white rounded-md gap-2"
+>
+  <img
+    src="/shi.webp‎"
+    alt="Login"
+    className="w-4 h-4 object-contain"
+  />
+  Login
+  <ChevronDown className="w-3.5 h-3.5 opacity-70" />
+</Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent
                 align="end"
