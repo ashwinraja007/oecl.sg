@@ -164,11 +164,11 @@ const Navigation = () => {
   variant="outline"
   className="border-kargon-red text-kargon-red hover:bg-kargon-red hover:text-white rounded-md gap-2"
 >
-  <img
-    src="/ship.png‎"
-    alt="Login"
-    className="w-4 h-4 object-contain"
-  />
+<img
+  src="/ship.png"
+  alt="Login"
+  className="w-4 h-4 object-contain"
+/>
   Login
   <ChevronDown className="w-3.5 h-3.5 opacity-70" />
 </Button>
