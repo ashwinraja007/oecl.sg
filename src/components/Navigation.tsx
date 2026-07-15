@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Menu, X, LogIn, Users, UserCircle, Briefcase, ChevronDown } from "lucide-react";
+import { Menu, X, Users, UserCircle, Briefcase, ChevronDown } from "lucide-react";
 import { useAuth } from "@/contexts/AuthContext";
 import CountrySelector from "@/components/CountrySelector";
 import { getCurrentCountryFromPath } from "@/services/countryDetection";
@@ -14,22 +14,22 @@ import {
 
 const loginPortals = [
   {
-    title: "Consolmate",
+    title: "Shipsoft Login",
+    description: "Internal staff access",
+    url: "https://cs.shipsoft.co/freight_forwarding/#/auth/login",
+    icon: Briefcase,
+  },
+  {
+    title: "Customer Login",
     description: "Consolidation & cargo management",
     url: "https://consolmate.com/auth/login/2",
     icon: Users,
   },
   {
-    title: "Partner Portal",
+    title: "Partner Login",
     description: "For agents & business partners",
     url: "https://pp.onlinetracking.co/auth/login/2",
     icon: UserCircle,
-  },
-  {
-    title: "Employee",
-    description: "Internal staff access",
-    url: "https://cs.shipsoft.co/freight_forwarding/#/auth/login",
-    icon: Briefcase,
   },
 ];
 
@@ -169,7 +169,11 @@ const Navigation = () => {
                   variant="outline"
                   className="border-kargon-red text-kargon-red hover:bg-kargon-red hover:text-white rounded-md gap-1.5 whitespace-nowrap"
                 >
-                  <LogIn className="w-4 h-4" />
+                  <img
+                    src="/ship.png"
+                    alt=""
+                    className="h-4 w-auto object-contain shrink-0"
+                  />
                   Login
                   <ChevronDown className="w-3.5 h-3.5 opacity-70" />
                 </Button>
