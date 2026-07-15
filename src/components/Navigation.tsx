@@ -13,23 +13,23 @@ import {
 } from "@/components/ui/dropdown-menu";
 
 const loginPortals = [
+   {
+    title: "Shipsoft Login",
+    description: "Internal staff access",
+    url: "https://cs.shipsoft.co/freight_forwarding/#/auth/login",
+    icon: Briefcase,
+  },
   {
-    title: "Consolmate",
+    title: "Customer Login",
     description: "Consolidation & cargo management",
     url: "https://consolmate.com/auth/login/2",
     icon: Users,
   },
   {
-    title: "Partner Portal",
+    title: "Partner Login",
     description: "For agents & business partners",
     url: "https://pp.onlinetracking.co/auth/login/2",
     icon: UserCircle,
-  },
-  {
-    title: "Employee",
-    description: "Internal staff access",
-    url: "https://cs.shipsoft.co/freight_forwarding/#/auth/login",
-    icon: Briefcase,
   },
 ];
 
