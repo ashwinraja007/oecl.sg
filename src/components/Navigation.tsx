@@ -165,7 +165,7 @@ const Navigation = () => {
   className="border-kargon-red text-kargon-red hover:bg-kargon-red hover:text-white rounded-md gap-2"
 >
   <img
-    src="/shi.webp‎"
+    src="/ship.png‎"
     alt="Login"
     className="w-4 h-4 object-contain"
   />
