@@ -172,7 +172,7 @@ const Navigation = () => {
                   <img
                     src="/ship.png"
                     alt=""
-                    className="h-4 w-auto object-contain shrink-0"
+                    className="h-7 w-auto object-contain shrink-0"
                   />
                   Login
                   <ChevronDown className="w-3.5 h-3.5 opacity-70" />
