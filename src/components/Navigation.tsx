@@ -52,34 +52,35 @@ const Navigation = () => {
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex justify-between items-center">
           {/* Logo Section */}
-          <div className="flex items-center gap-4">
-            <Link to={getNavLink("/home")}>
+          <div className="flex items-center gap-3 shrink-0">
+            <Link to={getNavLink("/home")} className="shrink-0">
               <img
                 alt="GGL Logo"
-                className="h-10 w-auto cursor-pointer object-fill transition-all duration-300"
+                className="h-9 w-auto cursor-pointer object-fill transition-all duration-300"
                 src="/lovable-uploads/80ac017b-3e55-468b-9c72-9730b97cdcb0.png"
               />
             </Link>
-            <div className="h-8 w-px bg-gray-500 hidden md:block"></div>
+            <div className="h-8 w-px bg-gray-500 hidden xl:block"></div>
             <a
-  href="https://1ge.sg"
-  target="_blank"
-  rel="noopener noreferrer"
-  aria-label="Visit 1 Global Enterprises Website"
->
-            <img
-              alt="1 Global Enterprises Logo"
-              src="/lovable-uploads/a2513c1d-2708-4143-a69b-fa65a1d4d1f2.png"
-              className="hidden md:block h-11 w-auto object-contain transition-all duration-300"
-            />
+              href="https://1ge.sg"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Visit 1 Global Enterprises Website"
+              className="hidden xl:block shrink-0"
+            >
+              <img
+                alt="1 Global Enterprises Logo"
+                src="/lovable-uploads/a2513c1d-2708-4143-a69b-fa65a1d4d1f2.png"
+                className="h-10 w-auto object-contain transition-all duration-300"
+              />
             </a>
           </div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-6">
+          <nav className="hidden md:flex items-center gap-4 lg:gap-6 mx-2">
             <Link
               to={getNavLink("/home")}
-              className={`nav-link font-medium text-black hover:text-kargon-red ${
+              className={`nav-link font-medium text-black hover:text-kargon-red text-[15px] whitespace-nowrap ${
                 isActive(getNavLink("/home")) ||
                 (currentCountry.code === "SG" && isActive("/"))
                   ? "text-kargon-red"
@@ -93,7 +94,7 @@ const Navigation = () => {
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <button
-                  className={`font-medium text-black hover:text-kargon-red ${
+                  className={`font-medium text-black hover:text-kargon-red text-[15px] whitespace-nowrap ${
                     isActive(getNavLink("/about-us")) || isActive("/gallery")
                       ? "text-kargon-red"
                       : ""
@@ -124,7 +125,7 @@ const Navigation = () => {
 
             <Link
               to={getNavLink("/services")}
-              className={`nav-link font-medium text-black hover:text-kargon-red ${
+              className={`nav-link font-medium text-black hover:text-kargon-red text-[15px] whitespace-nowrap ${
                 isActive(getNavLink("/services")) ? "text-kargon-red" : ""
               }`}
             >
@@ -132,7 +133,7 @@ const Navigation = () => {
             </Link>
             <Link
               to={getNavLink("/blogs")}
-              className={`nav-link font-medium text-black hover:text-kargon-red ${
+              className={`nav-link font-medium text-black hover:text-kargon-red text-[15px] whitespace-nowrap ${
                 isActive("/blog") ? "text-kargon-red" : ""
               }`}
             >
@@ -140,7 +141,7 @@ const Navigation = () => {
             </Link>
             <Link
               to={getNavLink("/global-presence")}
-              className={`nav-link font-medium text-black hover:text-kargon-red ${
+              className={`nav-link font-medium text-black hover:text-kargon-red text-[15px] whitespace-nowrap ${
                 isActive(getNavLink("/global-presence")) ? "text-kargon-red" : ""
               }`}
             >
@@ -149,10 +150,13 @@ const Navigation = () => {
           </nav>
 
           {/* Country Selector & Quote Button */}
-          <div className="hidden md:flex items-center gap-4">
+          <div className="hidden md:flex items-center gap-2 lg:gap-3 shrink-0">
             <CountrySelector />
             <Link to={`${getNavLink("/contact")}#contact-form`}>
-              <Button className="bg-kargon-red hover:bg-kargon-red/90 text-white rounded-md">
+              <Button
+                size="sm"
+                className="bg-kargon-red hover:bg-kargon-red/90 text-white rounded-md whitespace-nowrap"
+              >
                 Contact / Quote
               </Button>
             </Link>
@@ -161,8 +165,9 @@ const Navigation = () => {
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button
+                  size="sm"
                   variant="outline"
-                  className="border-kargon-red text-kargon-red hover:bg-kargon-red hover:text-white rounded-md gap-2"
+                  className="border-kargon-red text-kargon-red hover:bg-kargon-red hover:text-white rounded-md gap-1.5 whitespace-nowrap"
                 >
                   <LogIn className="w-4 h-4" />
                   Login
