@@ -167,7 +167,7 @@ const Navigation = () => {
 <img
   src="/ship.png"
   alt="Login"
-  className="w-12 h-12 object-contain shrink-0"
+  className="w-16 h-16 object-contain shrink-0"
 />
   Login
   <ChevronDown className="w-3.5 h-3.5 opacity-70" />
