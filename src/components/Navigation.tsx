@@ -14,7 +14,7 @@ import {
 
 const loginPortals = [
   {
-    title: "Shipsoft Login",
+    title: "Employee Login",
     description: "Internal staff access",
     url: "https://cs.shipsoft.co/freight_forwarding/#/auth/login",
     icon: Briefcase,
